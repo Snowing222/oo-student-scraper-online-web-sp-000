@@ -41,20 +41,32 @@ class Scraper
     doc=Nokogiri::HTML(html)
 
     student_profile={}
+<<<<<<< HEAD
 
     doc.css(".social-icon-container a").each do |social_media_node|
       value=social_media_node.attribute("href").value
+=======
+
+    doc.css(".social-icon-container a").each do |social_media_node|
+      value=social_media_node.attribute("href").value
+      binding.pry
+
+>>>>>>> f3cf859fb080d70c68a4eeff2af8fbcf8337b586
       if value.match /https:\/\/(?:www\.)?(\w+)\.*/
         key=(value.scan /https:\/\/(?:www\.)?(\w+)\.*/)[0][0]
         student_profile[key.to_sym]=value
       else
         student_profile[:blog]=value
+<<<<<<< HEAD
       end
+=======
+>>>>>>> f3cf859fb080d70c68a4eeff2af8fbcf8337b586
     end
     student_profile[:bio]=doc.css(".description-holder p").text
     student_profile[:profile_quote]=doc.css(".profile-quote").text
     student_profile
   end
+end
 end
 
 #  def self.scrape_profile_page(profile_url)
